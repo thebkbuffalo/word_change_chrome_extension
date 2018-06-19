@@ -12,12 +12,20 @@ for (var i = 0; i < elements.length; i++) {
             var text = node.nodeValue;
             var replacedText = text.replace(/tent city/gi, 'Concentration Camp');
             var secondReplacedText = text.replace(/detention center/gi, 'Concentration Camp');
+            var pluralReplaceText = test.replace(/tent cities/gi, 'Concentration Camps');
+            var plural2ReplaceText = test.replace(/detention centers/gi, 'Concentration Camps');
 
             if (replacedText !== text) {
                 element.replaceChild(document.createTextNode(replacedText), node);
             }
             if (secondReplacedText !== text) {
               element.replaceChild(document.createTextNode(secondReplacedText), node);
+            }
+            if (pluralReplaceText !== text) {
+              element.replaceChild(document.createTextNode(pluralReplaceText), node);
+            }
+            if (plural2ReplaceText !== text) {
+              element.replaceChild(document.createTextNode(plural2ReplaceText), node);
             }
         }
     }
