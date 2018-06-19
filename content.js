@@ -1,18 +1,41 @@
-var elements = document.getElementsByTagName('*');
+//credit goes to Steven Frank of Cloud to Butt (https://github.com/panicsteve/cloud-to-butt/)
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+walk(document.body);
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
+function walk(node)
+{
+	// I stole this function from here:
+	// http://is.gd/mwZp7E
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(/[detention center]/gi, '[Concentration Camp]');
+	var child, next;
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
+	switch ( node.nodeType )
+	{
+		case 1:
+		case 9:
+		case 11:
+			child = node.firstChild;
+			while ( child )
+			{
+				next = child.nextSibling;
+				walk(child);
+				child = next;
+			}
+			break;
+
+		case 3:
+			handleText(node);
+			break;
+	}
+}
+
+function handleText(textNode)
+{
+	var v = textNode.nodeValue;
+
+	v = v.replace(/\btent city\b/g, "concentration camps");
+	v = v.replace(/\bdetention center\b/g, "concentration camp");
+
+
+	textNode.nodeValue = v;
 }
