@@ -12,11 +12,11 @@ for (var i = 0; i < elements.length; i++) {
             var text = node.nodeValue;
             var replacedText = text.replace(/tent city/gi, 'Concentration Camp');
             var secondReplacedText = text.replace(/detention center/gi, 'Concentration Camp');
-            var pluralReplaceText = test.replace(/tent cities/gi, 'Concentration Camps');
-            var plural2ReplaceText = test.replace(/detention centers/gi, 'Concentration Camps');
+            var pluralReplaceText = text.replace(/tent cities/gi, 'Concentration Camps');
+            var plural2ReplaceText = text.replace(/detention centers/gi, 'Concentration Camps');
 
             if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
+              element.replaceChild(document.createTextNode(replacedText), node);
             }
             if (secondReplacedText !== text) {
               element.replaceChild(document.createTextNode(secondReplacedText), node);
