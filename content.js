@@ -1,41 +1,24 @@
-//credit goes to Steven Frank of Cloud to Butt (https://github.com/panicsteve/cloud-to-butt/)
+// credit for this JS goes to Chris Engram who got this from the millenials to snake people extension
 
-walk(document.body);
+var elements = document.getElementsByTagName('*');
 
-function walk(node)
-{
-	// I stole this function from here:
-	// http://is.gd/mwZp7E
+for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
 
-	var child, next;
+    for (var j = 0; j < element.childNodes.length; j++) {
+        var node = element.childNodes[j];
 
-	switch ( node.nodeType )
-	{
-		case 1:
-		case 9:
-		case 11:
-			child = node.firstChild;
-			while ( child )
-			{
-				next = child.nextSibling;
-				walk(child);
-				child = next;
-			}
-			break;
+        if (node.nodeType === 3) {
+            var text = node.nodeValue;
+            var replacedText = text.replace(/tent city/gi, 'Concentration Camp');
+            var secondReplacedText = text.replace(/detention center/gi, 'Concentration Camp');
 
-		case 3:
-			handleText(node);
-			break;
-	}
-}
-
-function handleText(textNode)
-{
-	var v = textNode.nodeValue;
-
-	v = v.replace(/\btent city\b/g, "concentration camps");
-	v = v.replace(/\bdetention center\b/g, "concentration camp");
-
-
-	textNode.nodeValue = v;
+            if (replacedText !== text) {
+                element.replaceChild(document.createTextNode(replacedText), node);
+            }
+            if (secondReplacedText !== text) {
+              element.replaceChild(document.createTextNode(secondReplacedText), node);
+            }
+        }
+    }
 }
