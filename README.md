@@ -1,1 +1,1 @@
-This is your Chrome extension which replaces a word or phrase with a different word or phrase. 
+This extension changes the words "tent city" or "detention center" to "Concentration Camp".
